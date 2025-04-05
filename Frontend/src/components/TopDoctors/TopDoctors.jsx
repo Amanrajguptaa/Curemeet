@@ -1,5 +1,6 @@
 import React from 'react'
 import { doctors } from "../../assets/assets_frontend/assets.js";
+import { Link } from 'react-router-dom';
 
 const TopDoctors = () => {
   return (
@@ -23,7 +24,11 @@ const TopDoctors = () => {
         }
       </div>
 
-      <div className='flex  justify-center items-center mt-10'><button className='px-16 py-3 rounded-3xl bg-gray-200 text-gray-600'>More</button></div>
+      <div className='flex  justify-center items-center mt-10'>
+        <Link onClick={()=>scrollTo(0,0)} to={'/doctors'}>
+        <button className='px-16 py-3 rounded-3xl bg-gray-200 text-gray-600'>More</button>
+        </Link>
+        </div>
     </div>
   )
 }

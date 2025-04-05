@@ -10,6 +10,8 @@ const RelatedDoctors = ({docId,speciality}) => {
     const relatedDoctors = doctors.filter((item)=>item.speciality==speciality && item._id !=docId )
 
   return (
+    <div className='my-10'>
+      <h2 className='text-4xl font-bold text-gray-600'>Related Doctors</h2>
     <div className='grid grid-cols-4 my-10 gap-10'>
       {relatedDoctors.map((item,index)=>(
         <Link onClick={()=>scrollTo(0,0)} to={`/appointment/${item._id}`}><div
@@ -32,6 +34,7 @@ const RelatedDoctors = ({docId,speciality}) => {
               <p className="text-gray-500 text-sm">{item.speciality}</p>
             </div>
             </Link>      ))}
+    </div>
     </div>
   )
 }

@@ -31,21 +31,19 @@ const Header = () => {
   return (
     <div className='my-16'>
       <div className='flex justify-between items-center bg-primary px-10 rounded-2xl'>
-        {/* left side */}
         <div>
           <h1 className='text-6xl font-bold text-white '>Book Appointment <br />
-          With Trusted <br /> Doctors</h1>
-          <div className='flex mt-5'>
-          <div className="flex mr-6">
+          With Trusted Doctors 🩺</h1>
+          <div className='flex mt-5 w-full justify-start items-center'>
+          <div className="flex w-full">
               <AnimatedTooltip items={people} />
             </div>
-            <p className='text-white  '>Simply browse through our extensive list of trusted doctors,
+            <p className='text-white -ml-32'>Simply browse through our extensive list of trusted doctors,
             schedule your appointment hassle-free.</p>
           </div>
           <a href="#speciality"> <button className='mt-5 bg-white text-black px-5 py-3 rounded-3xl hover:scale-105 flex justify-center items-center gap-5'>Book appointment <img src={assets.arrow_icon} alt="" /></button></a>
         </div>
 
-        {/* right side */}
         <div>
           <img className='' src={assets.header_img} alt="" />
         </div>
