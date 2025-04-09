@@ -11,7 +11,7 @@ const Sidebar = () => {
           className={({isActive}) => `
             flex items-center gap-3 p-2 
             hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-400 text-white' : ''}
+            ${isActive ? 'bg-blue-600 text-white' : ''}
           `}
         >
           <FaHome className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />
@@ -23,7 +23,7 @@ const Sidebar = () => {
           className={({isActive}) => `
             flex items-center gap-3 p-2 
             hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-400 text-white' : ''}
+            ${isActive ? 'bg-blue-600 text-white' : ''}
           `}
         >
           <FaCalendarAlt className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />
@@ -35,7 +35,7 @@ const Sidebar = () => {
           className={({isActive}) => `
             flex items-center gap-3 p-2 
             hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-400 text-white' : ''}
+            ${isActive ? 'bg-blue-600 text-white' : ''}
           `}
         >
           <FaUserPlus className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />
@@ -47,7 +47,7 @@ const Sidebar = () => {
           className={({isActive}) => `
             flex items-center gap-3 p-2 
             hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-400 text-white' : ''}
+            ${isActive ? 'bg-blue-600 text-white' : ''}
           `}
         >
           <FaUserMd className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />

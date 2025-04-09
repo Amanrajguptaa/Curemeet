@@ -33,8 +33,4 @@ connectDB()
   });
 
 app.use("/api/admin", adminRouter);
-//localhost:8000/api/admin/add-doctor
 
-app.get("/", (req, res) => {
-  res.send("Hello Ji");
-});

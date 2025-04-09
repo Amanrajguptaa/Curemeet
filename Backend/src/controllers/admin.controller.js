@@ -4,6 +4,28 @@ import { v2 as cloudinary } from "cloudinary";
 import doctorModel from ".././models/doctor.model.js";
 import jwt from "jsonwebtoken";
 
+const loginAdmin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (
+      email === process.env.ADMIN_EMAIL &&
+      password === process.env.ADMIN_PASSWORD
+    ) {
+      const token = jwt.sign(email + password, process.env.JWT_SECRET);
+      res.json({ success: true, token });
+    } else {
+      res.json({ success: false, message: "Invalid Email or Password" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: "Something Went Wrong",
+    });
+  }
+};
+
 const addDoctor = async (req, res) => {
   try {
     const {
@@ -44,7 +66,6 @@ const addDoctor = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    //upload img to cloudinary
     const imageUpload = await cloudinary.uploader.upload(imageFile.path, {
       resource_type: "image",
     });
@@ -71,28 +92,6 @@ const addDoctor = async (req, res) => {
       success: true,
       message: "Doctor Added Successfully",
     });
-  } catch (error) {
-    console.log(error);
-    res.json({
-      success: false,
-      message: "Something Went Wrong",
-    });
-  }
-};
-
-const loginAdmin = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    if (
-      email === process.env.ADMIN_EMAIL &&
-      password === process.env.ADMIN_PASSWORD
-    ) {
-      const token = jwt.sign(email + password, process.env.JWT_SECRET);
-      res.json({ success: true, token });
-    } else {
-      res.json({ success: false, message: "Invalid Email or Password" });
-    }
   } catch (error) {
     console.log(error);
     res.json({
