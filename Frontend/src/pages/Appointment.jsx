@@ -8,7 +8,6 @@ import RelatedDoctors from '../components/RelatedDoctors/RelatedDoctors';
 const Appointment = () => {
 
     const [docInfo, setDocInfo] = useState(null);
-
     const[doctorSlot,setDoctorSlot] = useState([]);
     const[slotIndex,setSlotIndex] = useState(0);
     const[slotTime,setSlotTime] = useState('');
@@ -76,6 +75,7 @@ const Appointment = () => {
 
   return (
     <div>
+
       <div className="flex justify-center items-center gap-10 bg-white rounded-lg border border-black my-10">
 
         <div className=' bg-primary rounded-md '><img src={docInfo?.image} alt={docInfo?.name} className="w-[900px] h-[300px] object-contain" /></div>

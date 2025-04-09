@@ -44,7 +44,7 @@ const Doctors = () => {
           {displayDoctors.map((item, index) => (
             <div
               key={index}
-              className="p-4 bg-white shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
+              className="p-4 bg-blue-50 shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
               onClick={() => {
                 navigate(`/appointment/${item._id}`);
                 window.scrollTo(0, 0);
@@ -54,7 +54,7 @@ const Doctors = () => {
                 <img 
                   src={item.image} 
                   alt={item.name}
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full h-48 object-cover rounded-lg border border-gray-300/20"
                 />
                 <div className=" flex items-center gap-1 mt-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>

@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets_frontend/assets.js";
 
 const Footer = () => {
   return (
-    <div className='mt-16 mb-5'>
+    <div className='mt-32 mb-5'>
       <div className='flex justify-between items-start'>
         <div className='flex flex-col gap-5'>
           <img src={assets.logo} alt="Prescripto" className='w-40' />

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({isVisible,setIsVisible}) => {
   const [token, setToken] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -87,11 +87,11 @@ const Navbar = () => {
               </DropdownMenu>
             </div>
           ) : (
-            <Link to={'/login'}>
-              <button className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-blue-700">
+              <button 
+              onClick={()=>setIsVisible(true)}
+              className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-blue-700">
                 Create account
               </button>
-            </Link>
           )}
         </div>
 
