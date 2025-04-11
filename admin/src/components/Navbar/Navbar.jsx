@@ -26,7 +26,7 @@ const Navbar = () => {
                         </div>
                         <button 
                             onClick={logoutHandler}
-                            className="bg-blue-600 hover:bg-blue-400 text-white px-8 py-2 rounded-3xl"
+                            className="bg-green-600 hover:bg-green-400 text-white px-8 py-2 rounded-3xl"
                         >
                             Logout
                         </button>

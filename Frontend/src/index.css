@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body{
+  background-color: #f1f5f5;
+}
 @layer base {
   :root {
     --radius: 0.5rem

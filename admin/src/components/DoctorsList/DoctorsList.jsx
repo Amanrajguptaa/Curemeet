@@ -35,7 +35,7 @@ const DoctorsList = () => {
           {[1,2,3,4,5,6,7,8,9].map((item, index) => (
             <div
               key={index}
-              className="p-4 bg-blue-50 shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
+              className="p-4 bg-green-50 shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
               >
               <div className="relative">
                 <img 

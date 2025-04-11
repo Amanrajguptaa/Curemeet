@@ -21,11 +21,11 @@ const Contact = () => {
 
           <div>
             <p className="text-gray-600">Tel: (000) 000-0000</p>
-            <p className="text-gray-600">Email: prescripto@gmail.com</p>
+            <p className="text-gray-600">Email: curemeet@gmail.com</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">CAREERS AT PRESCRIPTO</h3>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">CAREERS AT CUREMEET</h3>
             <p className="text-gray-600 mb-4">Learn more about our teams and job openings.</p>
             <button className="px-6 py-2 border border-gray-400 rounded hover:bg-gray-50 transition-colors">
               Explore Jobs

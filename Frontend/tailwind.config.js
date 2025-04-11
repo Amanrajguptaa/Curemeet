@@ -12,7 +12,7 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-			'primary':"#5f6FFF"
+			'primary':"#3AAFB9"
 		}
   	}
   },

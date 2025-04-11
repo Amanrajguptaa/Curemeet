@@ -53,14 +53,14 @@ const Login = () => {
 
         <button 
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+          className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
         >
          {state ==="Sign Up" ? "Create Account" :"Login"}
         </button>
 
         <p className="mt-4 text-center text-gray-600">
         {state ==="Sign Up" ? "Already have an account?" :"Create a new account?"}
-          <span onClick={state =="Sign Up"?()=>setState('Login'):()=>setState('Sign Up')} className="text-blue-500 hover:underline ml-1 cursor-pointer">{state ==="Sign Up" ? "Login here" :"Sign Up here"}</span>
+          <span onClick={state =="Sign Up"?()=>setState('Login'):()=>setState('Sign Up')} className="text-green-500 hover:underline ml-1 cursor-pointer">{state ==="Sign Up" ? "Login here" :"Sign Up here"}</span>
         </p>
       </form>
     </div>

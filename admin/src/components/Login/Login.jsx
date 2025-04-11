@@ -65,7 +65,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500"
               placeholder={`Enter ${loginType.toLowerCase()} email`}
               required
             />
@@ -78,14 +78,14 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500"
               placeholder={`Enter ${loginType.toLowerCase()} password`}
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
+            className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors"
           >
             Login as {loginType}
           </button>
@@ -94,7 +94,7 @@ const Login = () => {
             onClick={toggleLoginType}
             className=" mt-5"
           >
-            Are you a <span className='text-blue-500 hover:text-blue-700'> {loginType === "Admin" ? "Doctor" : "Admin"} </span> ? Login Here
+            Are you a <span className='text-green-500 hover:text-green-700'> {loginType === "Admin" ? "Doctor" : "Admin"} </span> ? Login Here
           </button>
       </div>
     </div>

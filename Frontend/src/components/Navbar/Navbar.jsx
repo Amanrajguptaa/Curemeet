@@ -24,7 +24,7 @@ const Navbar = ({isVisible,setIsVisible}) => {
       <nav className="flex justify-between items-center py-4 border-b border-gray-400">
         <div className="flex items-center gap-2">
           <Link to={'/'}>
-            <img src={assets.logo} alt="Prescripto Logo" className="h-6 sm:h-8" />
+            <img src={assets.logo} alt="Curemeet Logo" className="h-6 sm:h-10" />
           </Link>
         </div>
 
@@ -89,7 +89,7 @@ const Navbar = ({isVisible,setIsVisible}) => {
           ) : (
               <button 
               onClick={()=>setIsVisible(true)}
-              className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-blue-700">
+              className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-green-700">
                 Create account
               </button>
           )}
@@ -97,7 +97,7 @@ const Navbar = ({isVisible,setIsVisible}) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-white shadow-lg md:hidden z-50">
+          <div className="absolute top-16 left-0 right-0  shadow-lg md:hidden z-50">
             <div className="flex flex-col p-4 gap-4">
               <NavLink
                 to="/"
@@ -155,7 +155,7 @@ const Navbar = ({isVisible,setIsVisible}) => {
                 </>
               ) : (
                 <Link to={'/login'} onClick={toggleMenu}>
-                  <button className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-blue-700 w-full">
+                  <button className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-green-700 w-full">
                     Create account
                   </button>
                 </Link>

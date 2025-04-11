@@ -31,7 +31,7 @@ const MyProfile = () => {
           <div className="space-y-4">
             <div className="flex">
               <span className="w-24 text-gray-600">Email Id:</span>
-              <span className="text-blue-500">{userData.email}</span>
+              <span className="text-green-500">{userData.email}</span>
             </div>
             <div className="flex">
               <span className="w-24 text-gray-600">Phone:</span>

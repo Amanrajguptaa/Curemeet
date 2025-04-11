@@ -67,7 +67,7 @@ const LoginForm = ({ setActiveTab }) => {
             placeholder="Email id"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <div className="absolute left-4 top-3.5 text-gray-400">
@@ -84,7 +84,7 @@ const LoginForm = ({ setActiveTab }) => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <div className="absolute left-4 top-3.5 text-gray-400">
@@ -95,18 +95,18 @@ const LoginForm = ({ setActiveTab }) => {
         </div>
         
         <div className="text-right">
-          <a href="#" className="text-blue-500 hover:text-blue-600 text-sm">Forgot password?</a>
+          <a href="#" className="text-green-500 hover:text-green-600 text-sm">Forgot password?</a>
         </div>
         
         <button 
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-full font-medium transition duration-200"
+          className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-full font-medium transition duration-200"
         >
           Login
         </button>
         
         <div className="text-center text-gray-500 text-sm mt-4">
-          Don't have an account? <button type="button" onClick={() => setActiveTab('signup')} className="text-blue-500 hover:text-blue-600">Sign up</button>
+          Don't have an account? <button type="button" onClick={() => setActiveTab('signup')} className="text-green-500 hover:text-green-600">Sign up</button>
         </div>
       </div>
     </form>
@@ -139,7 +139,7 @@ const SignupForm = ({ setActiveTab }) => {
             placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <div className="absolute left-4 top-3.5 text-gray-400">
@@ -155,7 +155,7 @@ const SignupForm = ({ setActiveTab }) => {
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <div className="absolute left-4 top-3.5 text-gray-400">
@@ -172,7 +172,7 @@ const SignupForm = ({ setActiveTab }) => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-full py-3 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <div className="absolute left-4 top-3.5 text-gray-400">
@@ -184,13 +184,13 @@ const SignupForm = ({ setActiveTab }) => {
         
         <button 
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-full font-medium transition duration-200"
+          className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-full font-medium transition duration-200"
         >
           Sign Up
         </button>
         
         <div className="text-center text-gray-500 text-sm mt-4">
-          Already have an account? <button type="button" onClick={() => setActiveTab('login')} className="text-blue-500 hover:text-blue-600">Login</button>
+          Already have an account? <button type="button" onClick={() => setActiveTab('login')} className="text-green-500 hover:text-green-600">Login</button>
         </div>
       </div>
     </form>

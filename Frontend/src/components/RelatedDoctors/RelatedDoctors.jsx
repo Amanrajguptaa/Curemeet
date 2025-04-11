@@ -16,14 +16,14 @@ const RelatedDoctors = ({docId,speciality}) => {
       {relatedDoctors.map((item,index)=>(
         <Link onClick={()=>scrollTo(0,0)} to={`/appointment/${item._id}`}><div
               key={index}
-              className="p-4 bg-blue-50 shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
+              className="p-4 bg-[#E6FDFB] shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
               onClick={()=>navigate(`/appointment/${item._id}`)}
             >
               <div className="">
                 <img 
                   src={item.image} 
                   alt={item.name}
-                  className="w-full h-full object-cover rounded-lg border border-gray-300/20"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
               <div className=" flex items-center gap-1 mt-2">

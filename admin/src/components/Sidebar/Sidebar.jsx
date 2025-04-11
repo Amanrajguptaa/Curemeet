@@ -10,8 +10,8 @@ const Sidebar = () => {
           to="/admin-dashboard" 
           className={({isActive}) => `
             flex items-center gap-3 p-2 
-            hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-600 text-white' : ''}
+            hover:bg-green-400 rounded
+            ${isActive ? 'bg-green-600 text-white' : ''}
           `}
         >
           <FaHome className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />
@@ -22,8 +22,8 @@ const Sidebar = () => {
           to="/all-appointments"
           className={({isActive}) => `
             flex items-center gap-3 p-2 
-            hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-600 text-white' : ''}
+            hover:bg-green-400 rounded
+            ${isActive ? 'bg-green-600 text-white' : ''}
           `}
         >
           <FaCalendarAlt className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />
@@ -34,8 +34,8 @@ const Sidebar = () => {
           to="/add-doctor"
           className={({isActive}) => `
             flex items-center gap-3 p-2 
-            hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-600 text-white' : ''}
+            hover:bg-green-400 rounded
+            ${isActive ? 'bg-green-600 text-white' : ''}
           `}
         >
           <FaUserPlus className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />
@@ -46,8 +46,8 @@ const Sidebar = () => {
           to="/doctor-list"
           className={({isActive}) => `
             flex items-center gap-3 p-2 
-            hover:bg-blue-400 rounded
-            ${isActive ? 'bg-blue-600 text-white' : ''}
+            hover:bg-green-400 rounded
+            ${isActive ? 'bg-green-600 text-white' : ''}
           `}
         >
           <FaUserMd className={({isActive}) => isActive ? "text-white" : "text-gray-600"} />

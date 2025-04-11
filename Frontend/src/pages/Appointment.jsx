@@ -78,7 +78,7 @@ const Appointment = () => {
 
       <div className="flex justify-center items-center gap-10 bg-white rounded-lg border border-black my-10">
 
-        <div className=' bg-primary rounded-md '><img src={docInfo?.image} alt={docInfo?.name} className="w-[900px] h-[300px] object-contain" /></div>
+        <div className=' bg-primary/50 rounded-md '><img src={docInfo?.image} alt={docInfo?.name} className="w-[900px] h-[300px] object-contain" /></div>
         <div className=" flex flex-col">
           <div className='flex items-center gap-2'>
             <h2 className="text-4xl font-bold text-gray-700">{docInfo?.name}</h2>
@@ -105,7 +105,7 @@ const Appointment = () => {
         <div className="flex gap-4 mt-4">
             {
                 doctorSlot.length && doctorSlot.map((item,index)=>(
-                    <div onClick={()=>setSlotIndex(index)} key={index} className={`flex flex-col items-center justify-center w-16 h-16 rounded-full border ${slotIndex ===index ? 'bg-blue-600 text-white' : 'bg-white'} cursor-pointer hover:bg-blue-500 transition-all`}>
+                    <div onClick={()=>setSlotIndex(index)} key={index} className={`flex flex-col items-center justify-center w-16 h-16 rounded-full border ${slotIndex ===index ? 'bg-primary text-white' : ''} cursor-pointer hover:bg-[#B6FDFB] transition-all`}>
                         <p className="text-sm font-medium">{item[0] && daysOfWeek[item[0].datetime.getDay()].substring(0,3).toUpperCase()}</p>
                         <p className="text-sm">{item[0] && item[0].datetime.getDate()}</p>
                     </div>
@@ -119,7 +119,7 @@ const Appointment = () => {
       onClick={() =>setSlotTime(item.time)}
       key={index}
       className={`px-4 py-2 rounded-full border border-gray-300 text-sm cursor-pointer transition-all duration-200
-        ${item.time === slotTime ? 'bg-primary text-white' : 'hover:bg-blue-500 hover:text-white'}`}
+        ${item.time === slotTime ? 'bg-primary text-white' : 'hover:bg-[#B6FDFB]'}`}
     >
       {item.time.toUpperCase()}
     </div>
@@ -127,7 +127,7 @@ const Appointment = () => {
 </div>
 
 <div>
-    <button className='px-5 py-3 bg-blue-600 text-white rounded-3xl mt-6'>Book an appointment</button>
+    <button className='px-5 py-3 bg-primary text-white rounded-3xl mt-6'>Book an appointment</button>
 </div>
 
 
