@@ -1,4 +1,5 @@
 import doctorModel from "../models/doctor.model.js";
+
 const changeAvailablity = async (req, res) => {
   try {
     const { docId } = req.body;
@@ -15,5 +16,9 @@ const changeAvailablity = async (req, res) => {
     });
   }
 };
+
+const editDoctor = async (req,res)=>{
+  
+}
 
 export { changeAvailablity };

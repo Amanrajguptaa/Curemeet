@@ -5,6 +5,7 @@ import connectDB from "./src/db/index.js";
 import cookieParser from "cookie-parser";
 import connectCloudinary from "./src/utils/cloudinary.js";
 import adminRouter from "./src/routes/admin.route.js";
+import userRouter from "./src/routes/user.route.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -29,8 +30,10 @@ connectDB()
     });
   })
   .catch((err) => {
-    console.log("MONGO db connection failed !!! ", err);
+    console.log("MONGO DB Connection Failed !!! ", err);
   });
 
 app.use("/api/admin", adminRouter);
+app.use("/api/user",userRouter );
+
 

@@ -7,19 +7,20 @@ import jwt from "jsonwebtoken";
 const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     if (
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
     ) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET);
-      res.json({ success: true, token });
+      res.status(200).json({ success: true, token });
     } else {
-      res.json({ success: false, message: "Invalid Email or Password" });
+      res
+        .status(401)
+        .json({ success: false, message: "Invalid Email or Password" });
     }
   } catch (error) {
     console.log(error);
-    res.json({
+    res.status(500).json({
       success: false,
       message: "Something Went Wrong",
     });
@@ -39,6 +40,7 @@ const addDoctor = async (req, res) => {
       fees,
       address,
     } = req.body;
+
     const imageFile = req.file;
 
     if (
@@ -52,15 +54,21 @@ const addDoctor = async (req, res) => {
       !fees ||
       !address
     ) {
-      return res.json({ success: false, message: "Missing Details" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Missing Details" });
     }
 
     if (!validator.isEmail(email)) {
-      return res.json({ success: false, message: "Enter a Valid Email" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Enter a Valid Email" });
     }
 
     if (password.length < 8) {
-      return res.json({ success: false, message: "Enter a Strong Password" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Enter a Strong Password" });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -69,6 +77,7 @@ const addDoctor = async (req, res) => {
     const imageUpload = await cloudinary.uploader.upload(imageFile.path, {
       resource_type: "image",
     });
+
     const imageUrl = imageUpload.secure_url;
 
     const doctorData = {
@@ -88,33 +97,33 @@ const addDoctor = async (req, res) => {
     const newDoctor = new doctorModel(doctorData);
     await newDoctor.save();
 
-    res.json({
+    res.status(201).json({
       success: true,
       message: "Doctor Added Successfully",
     });
   } catch (error) {
     console.log(error);
-    res.json({
+    res.status(500).json({
       success: false,
-      message: "Something Went Wrong",
+      message: error.message,
     });
   }
 };
 
-const allDoctors = async (req, res) => {
+const listDoctors = async (req, res) => {
   try {
     const doctors = await doctorModel.find({}).select("-password");
-    res.json({
+    res.status(200).json({
       success: true,
       doctors,
     });
   } catch (error) {
     console.log(error);
-    res.json({
+    res.status(500).json({
       success: false,
-      message: "Something Went Wrong",
+      message: error.message,
     });
   }
 };
 
-export { addDoctor, loginAdmin, allDoctors };
+export { addDoctor, loginAdmin, listDoctors };
