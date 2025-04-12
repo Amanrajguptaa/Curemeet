@@ -6,7 +6,7 @@ import {
 } from "../controllers/admin.controller.js";
 import { changeAvailablity } from "../controllers/doctor.controller.js";
 import upload from "../middlewares/multer.js";
-import authAdmin from ".././middlewares/authAdmin.js";
+import {authAdmin} from ".././middlewares/auth.middleware.js";
 const adminRouter = express.Router();
 
 adminRouter.post("/login", loginAdmin);

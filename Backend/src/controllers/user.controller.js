@@ -1,5 +1,5 @@
 import validator from "validator";
-import userModel from "../models/user.model";
+import userModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { v2 as cloudinary } from "cloudinary";
@@ -119,11 +119,12 @@ const loginUser = async (req, res) => {
 
 const editUser = async (req, res) => {
   try {
-    const { userId } = req.body;
-    const { name, email, password, gender, dob, phone, address } = req.body;
+    const { userId ,name, email, password, gender, dob, phone, address } = req.body;
     const imageFile = req.file;
 
     const user = await userModel.findById(userId);
+    console.log(userId);
+    
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -173,9 +174,7 @@ const editUser = async (req, res) => {
       updateData.image = uploadResult.secure_url;
     }
 
-    const updatedUser = await userModel
-      .findByIdAndUpdate(userId, { $set: updateData }, { new: true })
-      .select("-password");
+    const updatedUser = await userModel.findByIdAndUpdate(userId, { updateData }).select("-password");
 
     return res.status(200).json({
       success: true,
