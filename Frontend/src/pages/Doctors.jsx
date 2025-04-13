@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectDoctors } from '../redux/doctorSlice';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { specialityData } from "../assets/assets_frontend/assets.js";
+import { DoctorsContext } from '../store/store.jsx';
 
 const Doctors = () => {
 
   const navigate = useNavigate();
 
-  const doctorslist = useSelector(selectDoctors);
+  const {doctors} = useContext(DoctorsContext);
   const [specialisation, setSpecialisation] = useState('');
   const { speciality } = useParams();
 
@@ -17,8 +16,8 @@ const Doctors = () => {
   }, [speciality]);
 
   const displayDoctors = specialisation
-    ? doctorslist.filter((item) => item.speciality === specialisation)
-    : doctorslist;
+    ? doctors?.filter((item) => item.speciality === specialisation)
+    : doctors;
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">

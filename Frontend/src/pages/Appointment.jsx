@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { selectDoctors } from '../redux/doctorSlice';
 import { assets } from '../assets/assets_frontend/assets';
 import RelatedDoctors from '../components/RelatedDoctors/RelatedDoctors';
+import { DoctorsContext } from '../store/store';
 
 const Appointment = () => {
 
@@ -13,7 +12,7 @@ const Appointment = () => {
     const[slotTime,setSlotTime] = useState('');
     const daysOfWeek = ['SUN','MON','TUE','WED','THU','FRI','SAT']
 
-    const doctorslist = useSelector(selectDoctors);
+    const {doctors} = useContext(DoctorsContext);
     const { docId } = useParams();
 
 
@@ -60,9 +59,9 @@ const Appointment = () => {
     }
   
     useEffect(() => {
-      const doctor = doctorslist.find((item) => item._id === docId);
+      const doctor = doctors.find((item) => item._id === docId);
       setDocInfo(doctor);
-    }, [doctorslist, docId]);
+    }, [doctors, docId]);
 
     useEffect(()=>{
         getAvailableSlots()
@@ -94,7 +93,7 @@ const Appointment = () => {
           <p className="text-gray-500  text-sm">{docInfo?.about}</p>
           </div>
           <div className="mt-4">
-            <p className="text-gray-700">Appointment fee: ${docInfo?.fees}</p>
+            <p className="text-gray-700">Appointment fee: ₹{docInfo?.fees}</p>
           </div>
         </div>
 

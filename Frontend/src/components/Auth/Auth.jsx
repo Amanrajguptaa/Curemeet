@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { DoctorsContext } from '../../store/store';
+
 
 const Auth = ({isVisible,setIsVisible }) => {
+
   const [activeTab, setActiveTab] = useState('login');
   
   const showAuth = () => {
@@ -17,9 +21,8 @@ const Auth = ({isVisible,setIsVisible }) => {
   }
   
   return (
-    <div className="fixed inset-0 bg-black/80 bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md relative overflow-hidden">
-        {/* Close button */}
         <button 
           onClick={hideAuth}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -30,7 +33,6 @@ const Auth = ({isVisible,setIsVisible }) => {
           </svg>
         </button>
 
-        {/* Content */}
         <div className="p-6">
           {activeTab === 'login' ? (
             <LoginForm setActiveTab={setActiveTab} />
@@ -44,13 +46,15 @@ const Auth = ({isVisible,setIsVisible }) => {
 };
 
 const LoginForm = ({ setActiveTab }) => {
+  const {backendUrl,setToken} = useContext(DoctorsContext)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login submitted', { email, password });
+    const response = await axios.post(`${backendUrl}/api/user/login`,{email,password});
+    setToken(localStorage.setItem('token',response.data.token));
+    window.location.reload();
   };
   
   return (
@@ -95,18 +99,18 @@ const LoginForm = ({ setActiveTab }) => {
         </div>
         
         <div className="text-right">
-          <a href="#" className="text-green-500 hover:text-green-600 text-sm">Forgot password?</a>
+          <a href="#" className="text-primary text-sm">Forgot password?</a>
         </div>
         
         <button 
           type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-full font-medium transition duration-200"
+          className="w-full bg-primary hover:bg-primary/50  text-white py-3 rounded-full font-medium transition duration-200"
         >
           Login
         </button>
         
         <div className="text-center text-gray-500 text-sm mt-4">
-          Don't have an account? <button type="button" onClick={() => setActiveTab('signup')} className="text-green-500 hover:text-green-600">Sign up</button>
+          Don't have an account? <button type="button" onClick={() => setActiveTab('signup')} className="text-primary">Sign up</button>
         </div>
       </div>
     </form>
@@ -114,15 +118,16 @@ const LoginForm = ({ setActiveTab }) => {
 };
 
 const SignupForm = ({ setActiveTab }) => {
+  const {backendUrl,setToken} = useContext(DoctorsContext)
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log('Signup submitted', { name, email, password, confirmPassword });
+    const response = await axios.post(`${backendUrl}/api/user/register`,{name,email,password});
+    setToken(localStorage.setItem('token',response.data.token));
+    window.location.reload();
   };
   
   return (
@@ -184,13 +189,13 @@ const SignupForm = ({ setActiveTab }) => {
         
         <button 
           type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-full font-medium transition duration-200"
+          className="w-full bg-primary hover:bg-primary/50 text-white py-3 rounded-full font-medium transition duration-200"
         >
           Sign Up
         </button>
         
         <div className="text-center text-gray-500 text-sm mt-4">
-          Already have an account? <button type="button" onClick={() => setActiveTab('login')} className="text-green-500 hover:text-green-600">Login</button>
+          Already have an account? <button type="button" onClick={() => setActiveTab('login')} className="text-primary">Login</button>
         </div>
       </div>
     </form>

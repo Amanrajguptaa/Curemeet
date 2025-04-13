@@ -11,7 +11,7 @@ const adminRouter = express.Router();
 
 adminRouter.post("/login", loginAdmin);
 adminRouter.post("/add-doctor", authAdmin, upload.single("image"), addDoctor);
-adminRouter.get("/list-doctors", authAdmin, listDoctors);
+adminRouter.get("/list-doctors", listDoctors);
 adminRouter.post("/change-availability", authAdmin, changeAvailablity);
 
 export default adminRouter;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
@@ -8,7 +7,7 @@ import AddDoctor from './components/AddDoctor/AddDoctor';
 import DoctorsList from './components/DoctorsList/DoctorsList';
 
 const App = () => {
-  const { aToken } = useSelector((state) => state.admin);
+  const  aToken  = true;
 
   return !aToken ? (
     <div>

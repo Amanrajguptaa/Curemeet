@@ -57,7 +57,7 @@ export default function MyAppointments() {
       <div className="space-y-4">
         {appointments.map((appointment) => (
           <div key={appointment.id} className="border border-gray-200 rounded-lg p-4 flex">
-            <div className="w-32 h-40 bg-green-100 rounded-lg mr-4 flex items-center justify-center">
+            <div className="w-32 h-40 bg-primary/50 rounded-lg mr-4 flex items-center justify-center">
               <img 
                 src="../../assets/assets_frontend/doc4.png" 
                 alt="Doctor" 
@@ -87,7 +87,7 @@ export default function MyAppointments() {
                 <>
                   <button 
                     onClick={() => handlePayment(appointment.id)}
-                    className="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg transition-colors"
+                    className="bg-primary hover:bg-primary/70 text-white py-2 px-6 rounded-lg transition-colors"
                   >
                     Pay here
                   </button>
@@ -104,7 +104,7 @@ export default function MyAppointments() {
                 <>
                   <button 
                     disabled
-                    className="bg-green-500 opacity-75 text-white py-2 px-6 rounded-lg cursor-not-allowed"
+                    className="bg-primary hover:bg-primary/70 text-white py-2 px-6 rounded-lg"
                   >
                     Paid
                   </button>

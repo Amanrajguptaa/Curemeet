@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../../assets/assets_frontend/assets.js";
 import { NavLink } from "react-router-dom";
 import {
@@ -10,9 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { DoctorsContext } from "../../store/store.jsx";
 
 const Navbar = ({isVisible,setIsVisible}) => {
-  const [token, setToken] = useState(true);
+  const {token,setToken,logOut} = useContext(DoctorsContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -72,24 +73,24 @@ const Navbar = ({isVisible,setIsVisible}) => {
         {/* Desktop Auth Section */}
         <div className="hidden md:block">
           {token ? (
-            <div>
+            <div className="">
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <img className="rounded-full h-10 w-10" src={assets.profile_pic} alt="Profile"/>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="bg-white mt-5">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <Link to={'/my-profile'}><DropdownMenuItem>My Profile</DropdownMenuItem></Link>
                   <Link to={'/my-appointments'}><DropdownMenuItem>My Appointments</DropdownMenuItem></Link>
-                  <Link><DropdownMenuItem onClick={()=>setToken(false)}>Logout</DropdownMenuItem></Link>
+                  <Link><DropdownMenuItem onClick={logOut}>Logout</DropdownMenuItem></Link>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
           ) : (
               <button 
               onClick={()=>setIsVisible(true)}
-              className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-green-700">
+              className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-primary/70">
                 Create account
               </button>
           )}
@@ -145,7 +146,7 @@ const Navbar = ({isVisible,setIsVisible}) => {
                   </Link>
                   <button 
                     onClick={() => {
-                      setToken(false);
+                      logOut
                       toggleMenu();
                     }}
                     className="text-sm font-bold text-left"

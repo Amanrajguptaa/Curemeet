@@ -1,8 +1,10 @@
-import React from 'react'
-import { doctors } from "../../assets/assets_frontend/assets.js";
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { DoctorsContext } from '../../store/store.jsx';
 
 const TopDoctors = () => {
+    const navigate = useNavigate();
+  const {doctors} = useContext(DoctorsContext)
   return (
     <div className='my-16'>
       <h2 className='text-center font-bold text-4xl'>Top Doctors to Book</h2>
@@ -10,8 +12,11 @@ const TopDoctors = () => {
 
       <div className='grid grid-cols-4 gap-10 mt-10'>
         {
-           doctors.slice(0,10).map((item,index)=>(
-                <div className="bg-[#E6FDFB] rounded-lg p-4 shadow-lg hover:scale-110 transition-all ease-in-out">
+           doctors.slice(0,8).map((item,index)=>(
+                <div key={index} onClick={() => {
+                  navigate(`/appointment/${item._id}`);
+                  window.scrollTo(0, 0);
+                }} className="bg-[#E6FDFB] rounded-lg p-4 shadow-lg hover:scale-110 transition-all ease-in-out">
                     <img src={item.image} alt={item.name} className="w-full h-48 object-cover rounded-lg mb-4" />
                     <div className="flex items-center gap-2 mb-2 ">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
