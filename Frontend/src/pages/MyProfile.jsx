@@ -29,7 +29,6 @@ const MyProfile = () => {
       });
       
       setUserData(response.data.user);
-      console.log(response.data.user);
     } catch (err) {
       console.error("Error fetching user data:", err);
       setError("Failed to load user data. Please try again later.");

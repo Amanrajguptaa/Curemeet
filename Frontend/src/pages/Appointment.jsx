@@ -17,12 +17,10 @@ const Appointment = () => {
 
   const bookAppointment = async () => {
     if (!token) {
-      console.log("Please Login");
       return; 
     }
 
     if (!slotTime) {
-      console.log("Please select a time slot");
       return; 
     }
 
