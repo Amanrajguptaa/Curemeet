@@ -26,6 +26,16 @@ export default function MyAppointments() {
     }
   };
 
+  const handleCancelAppointment = async(appointmentId) =>{
+    const response = await axios.post(`${backendUrl}/api/doctor/cancel-appointment`,{appointmentId},{
+      headers:{
+        token:token
+      }
+    })
+    console.log(response);
+    getAppointmentData();
+  }
+
   useEffect(() => {
     getAppointmentData();
   }, []);
@@ -38,6 +48,7 @@ export default function MyAppointments() {
     return <div className="text-red-500 my-10">{error}</div>;
   }
 
+
   return (
     <div className="my-10">
       <h1 className="text-2xl font-medium text-gray-700 mb-6">My Appointments</h1>
@@ -48,7 +59,7 @@ export default function MyAppointments() {
         <div className="space-y-4">
           {appointments?.map((appointment) => (
             <div key={appointment._id} className="border border-gray-200 rounded-lg p-4 flex">
-              <div className="w-32 h-40 bg-primary/50 rounded-lg mr-4 flex items-center justify-center">
+              <div className="w-40 h-44 bg-primary/50 rounded-lg mr-4 flex items-center justify-center">
                 <img 
                   src={appointment.docData.image || "../../assets/assets_frontend/doc4.png"} 
                   alt="Doctor" 
@@ -60,10 +71,12 @@ export default function MyAppointments() {
                 <h2 className="text-xl font-medium text-gray-800">{appointment.docData.name}</h2>
                 
                 <div className="mb-2">
-                  <p className="text-gray-700 font-medium mt-6">Appointment Details:</p>
+                  <p className="text-gray-700 font-medium mt-3">Appointment Details:</p>
                   <p className="text-gray-600">Amount: ₹{appointment.amount}</p>
                   <p className="text-gray-600">
-                    Status: {appointment.cancelled ? "Cancelled" : appointment.payment ? "Paid" : "Pending"}
+                    {appointment.docData.address.line1}<br/>
+                    {appointment.docData.address.line2}
+
                   </p>
                 </div>
                 
@@ -84,7 +97,7 @@ export default function MyAppointments() {
                       Pay here
                     </button>
                     <button 
-                      onClick={() => handleCancel(appointment._id)}
+                      onClick={() => handleCancelAppointment(appointment._id)}
                       className="border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       Cancel appointment

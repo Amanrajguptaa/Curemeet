@@ -96,6 +96,39 @@ const listUserAppointments = async(req,res) =>{
 
 }
 
+const cancelDocAppointmnet = async(req,res)=>{
+  try {
+    const {userId,appointmentId} = req.body;
+
+    const appointmentData = await appointmentModel.findById(appointmentId);
+  
+    if(appointmentData.userId !== userId){
+      return res.json({success:false,message:"User isn't Authorized"})
+    }
+  
+    await appointmentModel.findByIdAndUpdate(appointmentId,{cancelled:true});
+  
+    const{docId,slotDate,slotTime} = appointmentData;
+  
+    const docData = await doctorModel.findById(docId);
+  
+    const slots_booked = docData.slots_booked;
+  
+    slots_booked[slotDate] = slots_booked[slotDate].filter(e =>e !== slotTime)
+  
+    await doctorModel.findByIdAndUpdate(docId,{slots_booked})
+  
+    return res.json({success:true,message:"Appointment Cancelled"})
+  
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
 const editDoctor = async (req, res) => {};
 
-export { changeAvailablity,bookDocAppointment,listUserAppointments };
+export { changeAvailablity,bookDocAppointment,listUserAppointments,cancelDocAppointmnet };
