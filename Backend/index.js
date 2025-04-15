@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import connectCloudinary from "./src/utils/cloudinary.js";
 import adminRouter from "./src/routes/admin.route.js";
 import userRouter from "./src/routes/user.route.js";
+import doctorRouter from "./src/routes/doctor.route.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -35,5 +36,5 @@ connectDB()
 
 app.use("/api/admin", adminRouter);
 app.use("/api/user",userRouter );
-
+app.use("/api/doctor",doctorRouter);
 
