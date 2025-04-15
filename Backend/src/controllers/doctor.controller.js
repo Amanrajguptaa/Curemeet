@@ -75,6 +75,27 @@ const bookDocAppointment = async (req, res) => {
   }
 };
 
+const listUserAppointments = async(req,res) =>{
+  try {
+    const {userId} = req.body;
+    const userAppointmentData = await appointmentModel.find({userId});
+
+    return res.json({
+      success:true,
+      message:"User Appointments",
+      userAppointmentData
+    })
+  
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+
+}
+
 const editDoctor = async (req, res) => {};
 
-export { changeAvailablity,bookDocAppointment };
+export { changeAvailablity,bookDocAppointment,listUserAppointments };
