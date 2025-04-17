@@ -8,7 +8,7 @@ export const DoctorsProvider = ({ children })=>{
   const [isAuthVisible, setIsAuthVisible] = useState(false);
   const [doctors, setDoctors] = useState([]);
   const[token,setToken] = useState('');
-  const backendUrl = "http://localhost:8000";
+  const backendUrl = "https://curemeet-production.up.railway.app";
 
   const fetchDoctors = async () => {
     try {
