@@ -21,7 +21,7 @@ const RelatedDoctors = ({ docId, speciality }) => {
             to={`/appointment/${item._id}`}
           >
             <div
-              className="p-4 bg-[#E6FDFB] shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
+              className="p-4 bg-secondary shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
               onClick={() => navigate(`/appointment/${item._id}`)}
             >
               <div className="">

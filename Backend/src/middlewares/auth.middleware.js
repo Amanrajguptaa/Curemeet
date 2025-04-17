@@ -28,7 +28,6 @@ const authAdmin = async (req, res, next) => {
 const authUser = async (req, res, next) => {
   try {
     const { token } = req.headers;
-    console.log(token);
     
     if (!token) {
       return res.status(401).json({ success: false, message: "No token, authorization denied" });
@@ -43,7 +42,6 @@ const authUser = async (req, res, next) => {
     }
     
     req.body.userId = decodedToken.id;
-    console.log(decodedToken.id);
     
     next();
     

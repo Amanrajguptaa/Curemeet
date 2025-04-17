@@ -12,8 +12,8 @@ import {
 import { Link } from "react-router-dom";
 import { DoctorsContext } from "../../store/store.jsx";
 
-const Navbar = ({isVisible,setIsVisible}) => {
-  const {token,setToken,logOut} = useContext(DoctorsContext);
+const Navbar = ({setIsAuthVisible}) => {
+  const {token,logOut} = useContext(DoctorsContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -29,12 +29,10 @@ const Navbar = ({isVisible,setIsVisible}) => {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button onClick={toggleMenu} className="md:hidden">
           <img src={assets.menu_icon} alt="Menu" className="h-6 w-6" />
         </button>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8">
           <NavLink
             to="/"
@@ -70,7 +68,6 @@ const Navbar = ({isVisible,setIsVisible}) => {
           </NavLink>
         </div>
 
-        {/* Desktop Auth Section */}
         <div className="hidden md:block">
           {token ? (
             <div className="">
@@ -89,14 +86,13 @@ const Navbar = ({isVisible,setIsVisible}) => {
             </div>
           ) : (
               <button 
-              onClick={()=>setIsVisible(true)}
+              onClick={()=>setIsAuthVisible(true)}
               className="bg-primary text-sm text-white px-5 py-3 rounded-3xl hover:bg-primary/70">
                 Create account
               </button>
           )}
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="absolute top-16 left-0 right-0  shadow-lg md:hidden z-50">
             <div className="flex flex-col p-4 gap-4">

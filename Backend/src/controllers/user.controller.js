@@ -123,7 +123,6 @@ const editUser = async (req, res) => {
     const imageFile = req.file;
 
     const user = await userModel.findById(userId);
-    console.log(userId);
     
     if (!user) {
       return res.status(404).json({

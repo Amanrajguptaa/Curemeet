@@ -43,7 +43,7 @@ const Doctors = () => {
           {displayDoctors.map((item, index) => (
             <div
               key={index}
-              className="p-4 bg-[#E0FDFB]/50 shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
+              className="p-4 bg-secondary shadow-md rounded-lg hover:-translate-y-3 transition-all ease-linear transition-300"
               onClick={() => {
                 navigate(`/appointment/${item._id}`);
                 window.scrollTo(0, 0);

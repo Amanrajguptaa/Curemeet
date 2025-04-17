@@ -3,20 +3,20 @@ import React, { useContext, useState } from 'react';
 import { DoctorsContext } from '../../store/store';
 
 
-const Auth = ({isVisible,setIsVisible }) => {
+const Auth = ({isAuthVisible,setIsAuthVisible }) => {
 
   const [activeTab, setActiveTab] = useState('login');
   
   const showAuth = () => {
-    setIsVisible(true);
+    setIsAuthVisible(true);
   };
   
   const hideAuth = () => {
-    setIsVisible(false);
+    setIsAuthVisible(false);
     if (onClose) onClose();
   };
   
-  if (!isVisible) {
+  if (!isAuthVisible) {
     return null;
   }
   

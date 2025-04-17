@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from "./pages/Home.jsx"
 import Navbar from './components/Navbar/Navbar.jsx'
@@ -11,13 +11,15 @@ import Appointment from './pages/Appointment.jsx'
 import MyProfile from './pages/MyProfile.jsx'
 import Auth from './components/Auth/Auth.jsx'
 import MyAppointments from './pages/MyAppointments.jsx'
+import { useContext } from 'react'
+import { DoctorsContext } from './store/store.jsx'
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const {isAuthVisible, setIsAuthVisible} = useContext(DoctorsContext);
   return (
     <div className='mx-4 sm:mx-[5%]'>
-      <Navbar isVisible={isVisible} setIsVisible={setIsVisible}/>
-      <Auth isVisible={isVisible} setIsVisible={setIsVisible}/>
+      <Navbar isAuthVisible={isAuthVisible} setIsAuthVisible={setIsAuthVisible}/>
+      <Auth isAuthVisible={isAuthVisible} setIsAuthVisible={setIsAuthVisible}/>
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/doctors' element={<Doctors/>} />

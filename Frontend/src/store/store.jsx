@@ -5,6 +5,7 @@ import axios from "axios";
 export const DoctorsContext = createContext();
 
 export const DoctorsProvider = ({ children })=>{
+  const [isAuthVisible, setIsAuthVisible] = useState(false);
   const [doctors, setDoctors] = useState([]);
   const[token,setToken] = useState('');
   const backendUrl = "http://localhost:8000";
@@ -34,6 +35,8 @@ export const DoctorsProvider = ({ children })=>{
   },[])
 
   const value = {
+    isAuthVisible,
+    setIsAuthVisible,
     backendUrl,
     token,
     setToken,

@@ -16,7 +16,7 @@ const TopDoctors = () => {
                 <div key={index} onClick={() => {
                   navigate(`/appointment/${item._id}`);
                   window.scrollTo(0, 0);
-                }} className="bg-[#E6FDFB] rounded-lg p-4 shadow-lg hover:scale-110 transition-all ease-in-out">
+                }} className="bg-secondary rounded-lg p-4 shadow-lg hover:scale-110 transition-all ease-in-out">
                     <img src={item.image} alt={item.name} className="w-full h-48 object-cover rounded-lg mb-4" />
                     <div className="flex items-center gap-2 mb-2 ">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>

@@ -1,23 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { assets } from "../assets/assets_frontend/assets";
 import RelatedDoctors from "../components/RelatedDoctors/RelatedDoctors";
 import { DoctorsContext } from "../store/store";
 import axios from "axios";
 
 const Appointment = () => {
+  const navigate = useNavigate();
   const [docInfo, setDocInfo] = useState(null);
   const [doctorSlot, setDoctorSlot] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState("");
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  const { doctors, backendUrl, token } = useContext(DoctorsContext);
+  const { doctors, backendUrl, token,setIsAuthVisible } = useContext(DoctorsContext);
   const { docId } = useParams();
 
   const bookAppointment = async () => {
     if (!token) {
-      return; 
+      setIsAuthVisible(true); 
     }
 
     if (!slotTime) {
@@ -42,7 +43,9 @@ const Appointment = () => {
           },
         }
       );
-      console.log(response);
+      if(response.data.success){
+        navigate('/my-appointments')
+      }
     } catch (error) {
       console.log(error);
     }
@@ -158,7 +161,7 @@ const Appointment = () => {
                     key={index}
                     className={`flex flex-col items-center justify-center w-16 h-16 rounded-full border ${
                       slotIndex === index ? "bg-primary text-white" : ""
-                    } cursor-pointer hover:bg-[#B6FDFB] transition-all`}
+                    } cursor-pointer hover:bg-tertiary transition-all`}
                   >
                     <p className="text-sm font-medium">
                       {item[0] &&
@@ -183,7 +186,7 @@ const Appointment = () => {
                 ${
                   item.time === slotTime
                     ? "bg-primary text-white"
-                    : "hover:bg-[#B6FDFB]"
+                    : "hover:bg-tertiary"
                 }`}
                   >
                     {item.time}
@@ -207,7 +210,7 @@ const Appointment = () => {
         </>
       ) : (
         <div className="flex justify-center items-center h-96">
-          <p className="text-2xl text-gray-500">Loading...</p>
+          <p className="text-2xl text-gray-500">Loading Doctor Info...</p>
         </div>
       )}
     </div>

@@ -9,7 +9,7 @@ import DoctorsList from './components/DoctorsList/DoctorsList';
 const App = () => {
   const  aToken  = true;
 
-  return !aToken ? (
+  return aToken ? (
     <div>
       <Navbar />
 

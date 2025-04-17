@@ -32,7 +32,6 @@ const Login = () => {
       if(loginType === 'Admin'){
         const {data} = await axios.post(backendUrl + '/api/admin/login',formData)
         if(data.success){
-          console.log(data.token);
           localStorage.setItem('aToken',data.token);
           dispatch(setAToken(data.token));
         }
