@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DoctorsContext } from '../../store/store';
+import { assets } from "../../assets/assets_frontend/assets.js";
+
+
 const CtaSection = () => {
   const {token, setIsAuthVisible} = useContext(DoctorsContext);
   return (
@@ -33,7 +36,7 @@ const CtaSection = () => {
         }
       </div>
         <img 
-          src="src/assets/assets_frontend/appointment_img.png" 
+          src={assets.appointment_img}
           alt="Doctor pointing" 
           className="h-[90%] object-cover absolute right-10 bottom-0"
         />
