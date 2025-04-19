@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { assets } from "../assets/assets_frontend/assets";
 import { DoctorsContext } from "../store/store";
 import axios from "axios";
+import { toast } from 'react-toastify';
+
 
 const MyProfile = () => {
   const [userData, setUserData] = useState(null);
@@ -10,7 +12,6 @@ const MyProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState(null);
   const [updateLoading, setUpdateLoading] = useState(false);
-  const [updateMessage, setUpdateMessage] = useState({ text: "", type: "" });
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageError, setImageError] = useState("");
@@ -80,7 +81,6 @@ const MyProfile = () => {
     setSelectedImage(null);
     setImagePreview(userData.image || assets.profile_pic);
     setImageError("");
-    setUpdateMessage({ text: "", type: "" });
   };
 
   const handleChange = (e) => {
@@ -112,14 +112,12 @@ const MyProfile = () => {
     setImageError("");
     
     if (file) {
-      // Validate file type
       const validTypes = ["image/jpeg", "image/png", "image/jpg", "image/gif"];
       if (!validTypes.includes(file.type)) {
         setImageError("Please select a valid image file (JPEG, PNG, GIF)");
         return;
       }
       
-      // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setImageError("Image size should not exceed 5MB");
         return;
@@ -140,24 +138,16 @@ const MyProfile = () => {
 
   const handleSave = async () => {
     try {
-      // Validate required fields
       if (!editedData.name || !editedData.phone || !editedData.dob || !editedData.gender) {
-        setUpdateMessage({ 
-          text: "Please fill in all required fields: Name, Phone, DOB, and Gender", 
-          type: "error" 
-        });
+        toast.warn("Please fill all Details")
         return;
       }
 
       setUpdateLoading(true);
-      setUpdateMessage({ text: "", type: "" });
 
       const authToken = token || localStorage.getItem("token");
       if (!authToken) {
-        setUpdateMessage({ 
-          text: "Authentication token not found. Please log in again.", 
-          type: "error" 
-        });
+        toast.error("Please Login")
         return;
       }
 
@@ -186,20 +176,13 @@ const MyProfile = () => {
 
       if (response.data.success) {
         await getUserData();
+        toast.success("Profile Edited")
         setIsEditing(false);
-        setUpdateMessage({ text: "Profile updated successfully!", type: "success" });
       } else {
-        setUpdateMessage({ 
-          text: response.data.message || "Failed to update profile", 
-          type: "error" 
-        });
+        toast.error("Error in Updating")
       }
     } catch (err) {
-      console.error("Error updating profile:", err);
-      setUpdateMessage({ 
-        text: err.response?.data?.message || "Failed to update profile. Please try again.", 
-        type: "error" 
-      });
+      toast.error("Failed to Update")
     } finally {
       setUpdateLoading(false);
     }
@@ -331,14 +314,6 @@ const MyProfile = () => {
           <h1 className="text-3xl font-bold">{userData.name}</h1>
         )}
       </div>
-
-      {updateMessage.text && (
-        <div className={`mb-4 p-3 rounded ${
-          updateMessage.type === "success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-        }`}>
-          {updateMessage.text}
-        </div>
-      )}
 
       <div className="space-y-8">
         <div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DoctorsContext } from '../../store/store';
-
+import { toast } from 'react-toastify';
 
 const Auth = ({isAuthVisible,setIsAuthVisible }) => {
 
@@ -52,9 +52,15 @@ const LoginForm = ({ setActiveTab }) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post(`${backendUrl}/api/user/login`,{email,password});
-    setToken(localStorage.setItem('token',response.data.token));
-    window.location.reload();
+    try {
+      const response = await axios.post(`${backendUrl}/api/user/login`,{email,password});
+      toast.success('Logged In Successfully');
+      setToken(localStorage.setItem('token',response.data.token));
+      window.location.reload();
+  
+    } catch (error) {
+      toast.error("Failed to Log In");
+    }
   };
   
   return (
@@ -125,9 +131,14 @@ const SignupForm = ({ setActiveTab }) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post(`${backendUrl}/api/user/register`,{name,email,password});
-    setToken(localStorage.setItem('token',response.data.token));
-    window.location.reload();
+    try {
+      const response = await axios.post(`${backendUrl}/api/user/register`,{name,email,password});
+      toast.success("Signed In Successfully")
+      setToken(localStorage.setItem('token',response.data.token));
+      window.location.reload();  
+    } catch (error) {
+      toast.error("Error Signing In")
+    }
   };
   
   return (

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { DoctorsContext } from "../store/store";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 export default function MyAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -41,10 +42,12 @@ export default function MyAppointments() {
         }
       );
       getAppointmentData();
+      toast.success("Appointment Cancelled")
     } catch (error) {
       console.error("Error in Cancelling:", err);
       setError("Failed to Cancel Appointment");
       setIsLoading(false);
+      toast.error("Failed to Cancel")
     }
   };
 
@@ -61,9 +64,10 @@ export default function MyAppointments() {
         try {
           const responseData = await axios.post(`${backendUrl}/api/payment/verify`,response,{headers:{token:token}})
           getAppointmentData();
+          toast.success("Payment Successful")
         } catch (error) {
           console.log(error);
-          
+          toast.error("Payment Failed")
         }
       }
     }

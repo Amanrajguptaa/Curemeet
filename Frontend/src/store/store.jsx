@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 
 export const DoctorsContext = createContext();
@@ -21,6 +22,7 @@ export const DoctorsProvider = ({ children })=>{
   const logOut = () => {
     localStorage.removeItem('token');
     window.location.reload();
+    toast.success("Logged Out Successfully")
   }
 
   useEffect(() => {

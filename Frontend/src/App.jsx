@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home.jsx"
 import Navbar from './components/Navbar/Navbar.jsx'
 import Footer from './components/Footer/Footer.jsx'
@@ -17,6 +19,8 @@ import { DoctorsContext } from './store/store.jsx'
 const App = () => {
   const {isAuthVisible, setIsAuthVisible} = useContext(DoctorsContext);
   return (
+    <>
+    <ToastContainer />
     <div className='mx-4 sm:mx-[5%]'>
       <Navbar isAuthVisible={isAuthVisible} setIsAuthVisible={setIsAuthVisible}/>
       <Auth isAuthVisible={isAuthVisible} setIsAuthVisible={setIsAuthVisible}/>
@@ -32,8 +36,9 @@ const App = () => {
         <Route path='/my-appointments' element={<MyAppointments/>} />
       </Routes>
       <Footer/>
-
     </div>
+    </>
+
   )
 }
 

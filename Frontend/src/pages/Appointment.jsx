@@ -4,6 +4,8 @@ import { assets } from "../assets/assets_frontend/assets";
 import RelatedDoctors from "../components/RelatedDoctors/RelatedDoctors";
 import { DoctorsContext } from "../store/store";
 import axios from "axios";
+import { toast } from 'react-toastify';
+
 
 const Appointment = () => {
   const navigate = useNavigate();
@@ -44,6 +46,7 @@ const Appointment = () => {
         }
       );
       if(response.data.success){
+        toast.success("Appointment Booked")
         navigate('/my-appointments')
       }
     } catch (error) {
