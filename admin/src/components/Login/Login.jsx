@@ -1,17 +1,12 @@
 import React, { useState } from 'react'
-import { useSelector,useDispatch } from 'react-redux';
-import { setAToken } from '../../redux/adminSlice.jsx';
 import axios from "axios";
+import { useContext } from 'react';
+import { AdminContext } from '../../store/store';
 
 const Login = () => {
   const [loginType, setLoginType] = useState("Admin")
 
-  const {aToken,backendUrl} = useSelector((state)=>state.admin)
-  const dispatch = useDispatch();
-
-
-
-
+  const {backendUrl,token,setToken} = useContext(AdminContext);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -20,27 +15,21 @@ const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormData(prev => ({...prev,[name]: value}))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       if(loginType === 'Admin'){
-        const {data} = await axios.post(backendUrl + '/api/admin/login',formData)
-        if(data.success){
-          localStorage.setItem('aToken',data.token);
-          dispatch(setAToken(data.token));
+        const response = await axios.post(backendUrl + '/api/admin/login',formData)        
+        if(response.data.success){
+          localStorage.setItem('token',response.data.token);
+          setToken(response.data.token);
         }
       }
-      else{
-
-      }
     } catch (error) {
-      
+      console.log(error);
     }
   }
 
@@ -64,7 +53,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary"
               placeholder={`Enter ${loginType.toLowerCase()} email`}
               required
             />
@@ -77,14 +66,14 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary"
               placeholder={`Enter ${loginType.toLowerCase()} password`}
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors"
+            className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary/50 transition-colors"
           >
             Login as {loginType}
           </button>
@@ -93,7 +82,7 @@ const Login = () => {
             onClick={toggleLoginType}
             className=" mt-5"
           >
-            Are you a <span className='text-green-500 hover:text-green-700'> {loginType === "Admin" ? "Doctor" : "Admin"} </span> ? Login Here
+            Are you a <span className='text-primary hover:text-green-700'> {loginType === "Admin" ? "Doctor" : "Admin"} </span> ? Login Here
           </button>
       </div>
     </div>

@@ -1,15 +1,14 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setAToken } from '../../redux/adminSlice';
 import { FaUserCircle } from 'react-icons/fa';
 import {assets} from '../../assets/assets_admin/assets.js'
+import { useContext } from 'react';
+import { AdminContext } from '../../store/store.jsx';
 const Navbar = () => {
-    const {aToken} = useSelector((state)=>state.admin)
-    const dispatch = useDispatch();
+    const {token,setToken} = useContext(AdminContext)
 
     const logoutHandler=()=>{
-        dispatch(setAToken(''))
-        localStorage.removeItem('aToken')
+        setToken('')
+        localStorage.removeItem('token')
     }
 
     return (
@@ -26,7 +25,7 @@ const Navbar = () => {
                         </div>
                         <button 
                             onClick={logoutHandler}
-                            className="bg-green-600 hover:bg-green-400 text-white px-8 py-2 rounded-3xl"
+                            className="bg-primary hover:bg-primary/70 text-white px-8 py-2 rounded-3xl"
                         >
                             Logout
                         </button>
