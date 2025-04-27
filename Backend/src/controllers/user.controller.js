@@ -201,4 +201,14 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, editUser, getUserProfile, deleteUser };
+const getUserCount = async (req, res) => {
+  try {
+    const count = await userModel.countDocuments();
+    res.status(200).json({ userCount: count });
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving user count', error: error.message });
+  }
+};
+
+
+export { registerUser, loginUser, editUser, getUserProfile, deleteUser,getUserCount };

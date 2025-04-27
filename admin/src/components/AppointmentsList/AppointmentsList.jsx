@@ -20,7 +20,7 @@ const AppointmentsList = () => {
   }
 
   return (
-    <div className="w-full p-4 md:p-8">
+    <div className="w-full p-6">
       <div className="flex justify-between items-center">
       <h2 className="text-2xl font-bold mb-6">Active Appointments</h2>
       <div className="text-sm text-gray-500">{appointments.filter((item)=>item.cancelled!=true).length} appointments available</div>

@@ -12,7 +12,7 @@ const DoctorsList = () => {
 
   if (loading) {
     return (
-      <div className="w-full p-8 flex justify-center items-center min-h-64">
+      <div className="w-full p-6 flex justify-center items-center min-h-64">
         <div className="animate-pulse text-primary font-medium">Loading doctors...</div>
       </div>
     );
@@ -20,7 +20,7 @@ const DoctorsList = () => {
 
   if (error) {
     return (
-      <div className="w-full p-8">
+      <div className="w-full p-6">
         <div className="bg-red-50 text-red-600 p-4 rounded-lg">{error}</div>
         <button 
           onClick={fetchDoctors}

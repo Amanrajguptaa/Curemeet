@@ -9,10 +9,20 @@ export const AdminProvider = ({children}) =>{
     const [token,setToken] = useState(localStorage.getItem('token') || '')
     const [appointments, setAppointments] = useState([]);
     const [doctors, setDoctors] = useState([]);
+    const [userCount,setUserCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const backendUrl = "http://localhost:8000";
+
+    const getUserCount = async () =>{
+      try {
+        const response = await axios.get(`${backendUrl}/api/user/get-count`);
+        setUserCount(response.data.userCount);
+      } catch (error) {
+        
+      }
+    }
 
       const fetchAppointments = async () => {
         try {
@@ -22,7 +32,8 @@ export const AdminProvider = ({children}) =>{
               token: token
             }
           });
-          setAppointments(response.data.appointmentData);          
+          setAppointments(response.data.appointmentData);  
+          console.log(response.data.appointmentData)        
         } catch (err) {
           console.error("Error fetching appointments:", err);
         } finally {
@@ -37,6 +48,7 @@ export const AdminProvider = ({children}) =>{
               headers: { Authorization: `Bearer ${token}` }
             });
             setDoctors(response.data.doctors);
+            console.log(response.data.doctors)        
             setLoading(false);
           } catch (err) {
             console.error("Error fetching doctors:", err);
@@ -54,7 +66,9 @@ export const AdminProvider = ({children}) =>{
         appointments,
         doctors,
         fetchAppointments,
-        fetchDoctors
+        fetchDoctors,
+        userCount,
+        getUserCount
     }
 
     return (

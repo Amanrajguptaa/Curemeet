@@ -102,9 +102,9 @@ const AddDoctor = () => {
   const selectClasses = "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all duration-200 outline-none bg-white";
 
   return (
-    <div className="bg-white rounded-2xl p-8 max-w-4xl mx-auto">
-      <div className="border-b border-gray-200 pb-4 mb-6">
-        <h2 className="text-3xl font-bold text-gray-800">Add New Doctor</h2>
+    <div className="p-6">
+      <div className="border-b border-gray-200 mb-6">
+        <h2 className="text-2xl font-bold text-gray-800">Add New Doctor</h2>
         <p className="text-gray-500 mt-1">Complete the form below to add a new doctor to the system</p>
       </div>
 

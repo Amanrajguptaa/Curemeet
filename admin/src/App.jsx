@@ -10,21 +10,19 @@ import AppointmentsList from './components/AppointmentsList/AppointmentsList';
 import Dashboard from './components/DashBoard/DashBoard';
 
 const App = () => {
-  const  {token} = useContext(AdminContext);
+  const { token } = useContext(AdminContext);
 
   return token ? (
     <div>
       <Navbar />
-
-      <div style={{ display: 'flex', height: '100vh' }}>
+      <div className="flex h-screen">
         <Sidebar />
-
-        <div style={{ flex: 1, padding: '20px', overflowY: 'auto' }}>
+        <div className="ml-72 flex-1 p-5 mt-16">
           <Routes>
-            <Route path="/admin-dashboard" element={<Dashboard/>} />
-            <Route path="/all-appointments" element={<AppointmentsList/>} />
+            <Route path="/admin-dashboard" element={<Dashboard />} />
+            <Route path="/all-appointments" element={<AppointmentsList />} />
             <Route path="/add-doctor" element={<AddDoctor />} />
-            <Route path="/doctor-list" element={<DoctorsList/>} />
+            <Route path="/doctor-list" element={<DoctorsList />} />
           </Routes>
         </div>
       </div>
