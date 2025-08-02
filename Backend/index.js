@@ -39,3 +39,11 @@ app.use("/api/admin", adminRouter);
 app.use("/api/user",userRouter );
 app.use("/api/doctor",doctorRouter);
 app.use("/api/payment",paymentRouter);
+
+app.get("/", (req, res) => {
+  res.send("Server is running ✅");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
