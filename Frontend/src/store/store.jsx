@@ -9,7 +9,7 @@ export const DoctorsProvider = ({ children })=>{
   const [isAuthVisible, setIsAuthVisible] = useState(false);
   const [doctors, setDoctors] = useState([]);
   const[token,setToken] = useState('');
-  const backendUrl = "https://curemeet-production.up.railway.app";
+  const backendUrl = "https://curemeet.onrender.com";
 
   const fetchDoctors = async () => {
     try {
@@ -51,4 +51,5 @@ export const DoctorsProvider = ({ children })=>{
       {children}
     </DoctorsContext.Provider>
   );
+
 }
