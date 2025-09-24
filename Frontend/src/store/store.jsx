@@ -9,7 +9,7 @@ export const DoctorsProvider = ({ children })=>{
   const [isAuthVisible, setIsAuthVisible] = useState(false);
   const [doctors, setDoctors] = useState([]);
   const[token,setToken] = useState('');
-  const backendUrl = "https://curemeet.onrender.com";
+  const backendUrl = "https://curemeet-g6d6.onrender.com";
 
   const fetchDoctors = async () => {
     try {
@@ -53,3 +53,4 @@ export const DoctorsProvider = ({ children })=>{
   );
 
 }
+
