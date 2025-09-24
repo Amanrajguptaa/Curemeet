@@ -13,7 +13,7 @@ export const AdminProvider = ({children}) =>{
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const backendUrl = "https://curemeet-production.up.railway.app";
+    const backendUrl = "https://curemeet-g6d6.onrender.com";
     
     const getUserCount = async () =>{
       try {
@@ -76,4 +76,5 @@ export const AdminProvider = ({children}) =>{
             {children}
         </AdminContext.Provider>
     )
+
 }
